@@ -12,7 +12,8 @@ TODAY = date.today().strftime("%Y-%m-%d")
 
 st.title('Asset forecast model by Synkarnia')
 
-stocks = ('MSFT','GOOG','AAPL','INFY','BNB-USD')
+stocks = ('MSFT','GOOG','AAPL','INFY','BNB-USD',
+	 'BTC-USD','ETH-USD','DOGE-USD','SOL-USD')
 selected_stock = st.selectbox('Select an asset for prediction (The price is in USD)', stocks)
 
 n_years = st.slider('Years of prediction:', 1, 2)
