@@ -6,6 +6,15 @@ import yfinance as yf
 from fbprophet import Prophet
 from fbprophet.plot import plot_plotly
 from plotly import graph_objs as go
+import keys
+import tweepy
+from textblob import TextBlob
+
+consumerkey=f'{keys.consumerkey}'
+consumerkeysecret=f'{keys.consumerkeysecret}'
+access_token=f'{keys.access_token}'
+access_token_secret=f'{keys.access_token_secret}'
+
 
 START = "2020-01-01"
 TODAY = date.today().strftime("%Y-%m-%d")
@@ -64,3 +73,24 @@ st.plotly_chart(fig1)
 st.write("Forecast attributes")
 fig2 = m.plot_components(forecast)
 st.write(fig2)
+
+#sentiment analysis
+if st.checkbox('sentiment analysis'):
+	st.subheader('Sentiment Analysis')
+	auth = tweepy.OAuth1UserHandler(consumerkey,consumerkeysecret)
+	auth.set_access_token(access_token,access_token_secret)
+	api = tweepy.API(auth)
+	inp = st.text_input('enter your search')
+	if st.button('search'):
+		public_tweet = api.search_tweets(inp, lang='en',count=10)
+		for tweet in public_tweet:
+			st.write(tweet.text)
+			analysis = TextBlob(tweet.text)
+			st.success(analysis.sentiment)
+			if analysis.sentiment[0]>0:
+				st.success('Positive')
+			elif analysis.sentiment[0] < 0:
+				st.success('Negative')
+			else :
+				st.success('Neutral')
+

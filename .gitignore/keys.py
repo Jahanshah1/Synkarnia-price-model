@@ -1,0 +1,4 @@
+consumerkey = 'NYYExyLUcnREmVJT5q6AVE1QE'
+consumerkeysecret = 'ybMMSIQlMMcw24Z5y7h83I2zj8mxRuVBpDzjYS0L5vWk5SGA4m'
+access_token = '1443811525400010755-AZEE2kvKnsddYp7IZr1vn2fqtqcnCG'
+access_token_secret = 'R63yGOKzb46dZkqgLyN04rspIm5EwlOlpNmgxsuSGQ7Vh'
